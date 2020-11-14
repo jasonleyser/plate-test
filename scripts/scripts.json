@@ -1,0 +1,6 @@
+{
+  "name": "User comments",
+  "id": "USER_COMMENTS",
+  "create_files": ["test_file1.js", "test_file2.js"],
+  "merge_files": ["test_merge1.js", "test_merge2.js"]
+}
