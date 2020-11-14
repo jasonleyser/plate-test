@@ -1,6 +1,16 @@
 {
+  "id": "1",
+  "slug": "user-comments",
   "name": "User comments",
-  "id": "USER_COMMENTS",
-  "create_files": ["test_file1.js", "test_file2.js"],
-  "merge_files": ["test_merge1.js", "test_merge2.js"]
+  "create_files": [
+    "component|test_file1.js",
+    "route|test_file2.js",
+    "page|test_file3.js"
+  ],
+  "create_db": ["comments|test_db1.js"],
+  "merge_files": [
+    "slate|test_merge1.js",
+    "data|test_merge2.js",
+    "actions|test_merge_3.js"
+  ]
 }

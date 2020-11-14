@@ -19,12 +19,12 @@ function Page(props) {
       <Head>
         <title>Plate - A Slate + NextJS + Postgres boilerplate</title>
       </Head>
-      <div style={{ height: "100vh", verticalAlign: "middle" }}>
-        <h1 style={{ fontWeight: 300, fontSize: "60px" }}>
+      <div>
+        <h1 style={{ fontWeight: 300, fontSize: "60px", marginTop: "40px" }}>
           Build decentralized <br /> apps in minutes
         </h1>
 
-        <h2 style={{ fontWeight: 200, fontSize: "34px", marginTop: "24px" }}>
+        <h2 style={{ fontWeight: 200, fontSize: "34px", marginTop: "16px" }}>
           + get{" "}
           <span>
             <Link href="https://slate.host">
@@ -34,12 +34,11 @@ function Page(props) {
           of free data storage.
         </h2>
 
-        <Link
-          href="#demo"
-          style={{ textDecoration: "none", marginTop: "34px" }}
-        >
+        <Link href="#demo">
           <a>
-            <Button>See code demo</Button>
+            <Button style={{ textDecoration: "none", marginTop: "40px" }}>
+              See demo
+            </Button>
           </a>
         </Link>
         <div id="includedAnchor"></div>
@@ -65,15 +64,19 @@ function Page(props) {
         <CodeBox text="const images = await Data.getUploads({ limit: 4 });" />
         <br />
         <div style={{ marginTop: "32px" }}>
-          {images.map((image, index) => (
-            <>
-              <img
-                width="100%"
-                src={`https://slate.textile.io/ipfs/${image.object_id}`}
-                key={image.object_id}
-              />
-            </>
-          ))}
+          {images ? (
+            images.map((image, index) => (
+              <>
+                <img
+                  width="100%"
+                  src={`https://slate.textile.io/ipfs/${image.object_id}`}
+                  key={image.object_id}
+                />
+              </>
+            ))
+          ) : (
+            <div>No images have been uploaded</div>
+          )}
         </div>
       </div>
       <div
