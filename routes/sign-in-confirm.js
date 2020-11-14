@@ -16,11 +16,13 @@ export default async (req, res, app) => {
   );
 
   if (req.query.error) {
+    console.log("query error: ", req.query.error);
     return res.redirect("/sign-in-error");
   }
 
   client.getToken(req.query.code, async (error, token) => {
     if (error) {
+      console.log("token error: ", error);
       return res.redirect("/sign-in-error");
     }
 
@@ -46,6 +48,8 @@ export default async (req, res, app) => {
     const name = response.data.names[0].displayName;
     const password = BCrypt.genSaltSync(10);
 
+    console.log("email: ", email);
+
     let user = await Data.getUserByEmail({ email });
 
     if (!user) {
@@ -60,27 +64,10 @@ export default async (req, res, app) => {
         salt,
         data: { name, verified: true },
       });
-
-      // NOTE(jim): Because the domain comes from google.
-      // If the organization doesn't exist. create it.
-      const domain = Strings.getDomainFromEmail(email);
-      const organization = await Data.getOrganizationByDomain({ domain });
-
-      if (!organization) {
-        const companyName = domain.split(".")[0];
-        await Data.createOrganization({
-          domain,
-          data: {
-            name: Strings.capitalizeFirstLetter(companyName),
-            tier: 0,
-            ids: [user.id],
-            admins: [],
-          },
-        });
-      }
     }
 
     if (user.error) {
+      console.log("user error: ", user.error);
       return app.render(req, res, "/sign-in-error", {
         jwt: null,
         viewer: null,
