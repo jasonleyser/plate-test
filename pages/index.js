@@ -104,7 +104,9 @@ function Page(props) {
           }}
         >
           - User authentication <br />
+          <br />
           - Slate file storage <br />
+          <br />
           - Page & component builder <br />
         </div>
         <Link href="#install">
