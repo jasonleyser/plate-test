@@ -4,8 +4,6 @@ import * as Data from "~/common/data";
 const google = require("googleapis").google;
 const OAuth2 = google.auth.OAuth2;
 
-console.log("client id: ", Credentials.CLIENT_ID);
-
 export default async (req, res, app) => {
   const client = new OAuth2(
     Credentials.CLIENT_ID,
