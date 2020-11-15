@@ -4,6 +4,8 @@ import * as Data from "~/common/data";
 const google = require("googleapis").google;
 const OAuth2 = google.auth.OAuth2;
 
+console.log("client id: ", Credentials.CLIENT_ID);
+
 export default async (req, res, app) => {
   const client = new OAuth2(
     Credentials.CLIENT_ID,
@@ -22,7 +24,7 @@ export default async (req, res, app) => {
   });
 
   const { viewer } = await Data.getViewer(req);
-  let allUploads = await Data.getAllUploads();
+  let allUploads = await Data.getUploads({ limit: 4 });
 
   if (!viewer || viewer.error) {
     return app.render(req, res, "/", { googleURL, viewer: null, allUploads });
