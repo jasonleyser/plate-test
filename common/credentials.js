@@ -1,5 +1,6 @@
-require("dotenv").config();
-
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 console.log("client id cred: ", process.env.CLIENT_ID);
 
 export const CLIENT_ID = process.env.CLIENT_ID;
