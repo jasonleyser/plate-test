@@ -7,8 +7,6 @@ import injectGlobalStyles from "~/common/styles/global";
 
 injectGlobalStyles();
 
-require("dotenv").config();
-
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const page = renderPage();
