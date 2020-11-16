@@ -1,19 +1,20 @@
-import * as Credentials from "~/credentials";
+import * as Credentials from "~/common/credentials";
 import * as Actions from "~/common/actions";
 import * as Constants from "~/common/constants";
 import * as Utilities from "~/common/utilities";
 
+console.log("client id slate: ", process.env.CLIENT_ID);
+
 export const Upload = async (event, user_id, slate) => {
   //Upload an image and insert a db query
   let file = event.target.files[0];
-  const slate_id = Credentials.SLATE_PRIVATE;
-  const api = Credentials.SLATE_API;
+  const slate_id = process.env.SLATE_PRIVATE;
+  const api = process.env.SLATE_API;
 
   console.log("[ SLATE ID ]: ", slate_id);
   console.log("[ SLATE API ]: ", api);
 
-  const url =
-    "https://uploads.slate.host/api/public/ffca5f8c-c9c6-425e-8e49-0b8f17015bd8";
+  const url = "https://uploads.slate.host/api/public/" + slate_id;
   let data = new FormData();
   data.append("data", file);
 
