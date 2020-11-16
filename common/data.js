@@ -1,11 +1,14 @@
 import * as Credentials from "~/common/credentials";
 import * as Utilities from "~/common/utilities";
+import * as Default from "~/common/default";
 
 import DB from "~/db";
 import JWT, { decode } from "jsonwebtoken";
 
 const google = require("googleapis").google;
 const OAuth2 = google.auth.OAuth2;
+
+console.log("client id data: ", Credentials.CLIENT_ID);
 
 const runQuery = async ({ queryFn, errorFn, label }) => {
   let response;
@@ -260,11 +263,25 @@ export const insertUploadData = async ({ user_id, object_id }) => {
   });
 };
 
-export const getUserUploads = async ({
-  user_id,
-  type = Constants.retrieve.default,
-  limit,
-}) => {
+export const getUploads = async ({ limit = Default.retrival.limit, sort }) => {
+  console.log("limit: ", limit);
+  return await runQuery({
+    label: "GET_ALL_UPLOADS",
+    queryFn: async () => {
+      const query = await DB.select("*").from("uploads").limit(limit);
+      return query;
+    },
+    errorFn: async (e) => {
+      console.log(e);
+      return {
+        error: "GET_ALL_UPLOADS",
+        source: e,
+      };
+    },
+  });
+};
+
+export const getUserUploads = async ({ user_id, limit }) => {
   return await runQuery({
     label: "GET_USER_UPLOADS",
     queryFn: async () => {
@@ -279,23 +296,6 @@ export const getUserUploads = async ({
       console.log(e);
       return {
         error: "GET_USER_UPLOADS",
-        source: e,
-      };
-    },
-  });
-};
-
-export const getAllUploads = async () => {
-  return await runQuery({
-    label: "GET_ALL_UPLOADS",
-    queryFn: async () => {
-      const query = await DB.select("*").from("uploads");
-      return query;
-    },
-    errorFn: async (e) => {
-      console.log(e);
-      return {
-        error: "GET_ALL_UPLOADS",
         source: e,
       };
     },

@@ -1,4 +1,5 @@
 import * as Data from "~/common/data";
+require("dotenv").config();
 
 export default async (req, res, app) => {
   const { viewer } = await Data.getViewer(req);
