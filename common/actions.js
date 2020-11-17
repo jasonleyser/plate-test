@@ -12,6 +12,8 @@ const REQUEST_HEADERS = {
   "Content-Type": "application/json",
 };
 
+console.log("slate api actions: ", Credentials.SLATE_API);
+
 const SERVER_PATH = "";
 
 const getHeaders = () => {
@@ -95,7 +97,8 @@ export const addToDatabase = async (data) => {
 //
 //
 export const Upload = async (event, user_id, slate) => {
-  console.log(Credentials.SLATE_API);
+  console.log("slate api upload: ", Credentials.SLATE_API);
+
   let slate_id = Credentials.SLATE_PRIVATE;
   let api = Credentials.SLATE_API;
   //Upload an image and insert a db query
