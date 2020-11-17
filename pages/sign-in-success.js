@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import * as React from "react";
 import * as Constants from "~/common/constants";
-import * as Data from "~/common/data";
+import * as Actions from "~/common/actions";
 
 import { css } from "react-emotion";
 
@@ -16,6 +16,7 @@ const STYLES_LAYOUT = css`
 function Page(props) {
   const user = props.viewer;
   const uploads = props.uploads;
+
   return (
     <React.Fragment>
       <Head>
@@ -34,7 +35,7 @@ function Page(props) {
           <input
             type="file"
             accept="image/x-png,image/gif,image/jpeg"
-            onChange={(e) => Data.Upload(event, user.id, "public")}
+            onChange={(e) => Actions.Upload(event, user.id, "public")}
           />
         </div>
         <br />
