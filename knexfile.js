@@ -2,16 +2,18 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+console.log("client id knexfile: ", process.env.CLIENT_ID);
+
 /* prettier-ignore */
 module.exports = {
   development: {
     client: 'pg',
     connection: {
-      port: process.env.PORT,
-      host: process.env.HOST,
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS
+      port: 1334,
+      host: '127.0.0.1',
+      database: 'nptdb',
+      user: 'admin',
+      password: 'oblivion'
     }
   },
   production: {
