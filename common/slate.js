@@ -3,16 +3,11 @@ import * as Actions from "~/common/actions";
 import * as Constants from "~/common/constants";
 import * as Utilities from "~/common/utilities";
 
-console.log("client id slate: ", process.env.CLIENT_ID);
-
 export const Upload = async (event, user_id, slate) => {
   //Upload an image and insert a db query
   let file = event.target.files[0];
-  const slate_id = process.env.SLATE_PRIVATE;
-  const api = process.env.SLATE_API;
-
-  console.log("[ SLATE ID ]: ", slate_id);
-  console.log("[ SLATE API ]: ", api);
+  let slate_id = Credentials.SLATE_PRIVATE;
+  let api = Credentials.SLATE_API;
 
   const url = "https://uploads.slate.host/api/public/" + slate_id;
   let data = new FormData();
@@ -21,7 +16,7 @@ export const Upload = async (event, user_id, slate) => {
   const response = await fetch(url, {
     method: "POST",
     headers: {
-      Authorization: "Basic " + process.env.SLATE_API,
+      Authorization: "Basic " + api,
     },
     body: data,
   });
