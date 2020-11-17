@@ -3,10 +3,10 @@ import * as Actions from "~/common/actions";
 import * as Constants from "~/common/constants";
 import * as Utilities from "~/common/utilities";
 
-let api = Credentials.SLATE_API;
-let slate_id = Credentials.SLATE_PRIVATE;
+console.log("slate api slate out: ", Credentials.SLATE_API);
 
 export const Upload = async (event, user_id, slate) => {
+  console.log("slate api slate in: ", Credentials.SLATE_API);
   //Upload an image and insert a db query
   let file = event.target.files[0];
 
