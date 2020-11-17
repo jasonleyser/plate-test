@@ -38,7 +38,7 @@ function Page(props) {
           <input
             type="file"
             accept="image/x-png,image/gif,image/jpeg"
-            onChange={(e) => Slate.Upload(event, user.id, "public")}
+            onChange={(e) => Data.Upload(event, user.id, "public")}
           />
         </div>
         <br />
