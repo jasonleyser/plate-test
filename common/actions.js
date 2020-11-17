@@ -94,7 +94,7 @@ export const addToDatabase = async (data) => {
 //
 //
 //
-export const Upload = async ({ event, user_id, slate }) => {
+export const Upload = async (event, user_id, slate) => {
   console.log(Credentials.SLATE_API);
   let slate_id = Credentials.SLATE_PRIVATE;
   let api = Credentials.SLATE_API;
