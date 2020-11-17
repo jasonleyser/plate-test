@@ -9,6 +9,7 @@ const google = require("googleapis").google;
 const OAuth2 = google.auth.OAuth2;
 
 console.log("client id data: ", Credentials.CLIENT_ID);
+console.log("client id data: ", Credentials.SLATE_API);
 
 const runQuery = async ({ queryFn, errorFn, label }) => {
   let response;
