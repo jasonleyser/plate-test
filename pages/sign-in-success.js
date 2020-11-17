@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import * as React from "react";
 import * as Constants from "~/common/constants";
-import * as Slate from "~/common/slate";
+import * as Data from "~/common/data";
 
 import { css } from "react-emotion";
 
@@ -16,10 +16,6 @@ const STYLES_LAYOUT = css`
 function Page(props) {
   const user = props.viewer;
   const uploads = props.uploads;
-  console.log("[ USER_DATA ]: ", user);
-  console.log("[ UPLOADS_DATA ]: ", uploads);
-  console.log("[ CLIENT ]: ", process.env.CLIENT_ID);
-
   return (
     <React.Fragment>
       <Head>
