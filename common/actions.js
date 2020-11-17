@@ -3,7 +3,7 @@ import "isomorphic-fetch";
 import Cookies from "universal-cookie";
 
 import * as Constants from "~/common/constants";
-import * as Data from "~/common/data";
+import * as Credentials from "~/common/credentials";
 
 const cookies = new Cookies();
 
