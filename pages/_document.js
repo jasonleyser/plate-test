@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import Navbar from "~/components/Navbar";
+require("dotenv").config();
 
 import { extractCritical } from "emotion-server";
 
