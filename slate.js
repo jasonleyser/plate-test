@@ -3,11 +3,12 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 import * as Actions from "~/common/actions";
+import * as Credentials from "~/common/credentials";
 
-console.log("slate api slate out: ", process.env.SLATE_API);
+console.log("slate api slate out: ", Credentials.SLATE_API);
 
 export const Upload = async (event, user_id, slate) => {
-  console.log("slate api slate in: ", process.env.SLATE_API);
+  console.log("slate api slate in: ", Credentials.SLATE_API);
   //Upload an image and insert a db query
   let file = event.target.files[0];
   let slate_id = process.env.SLATE_PRIVATE;

@@ -3,7 +3,6 @@ import "isomorphic-fetch";
 import Cookies from "universal-cookie";
 
 import * as Constants from "~/common/constants";
-import * as Credentials from "~/common/credentials";
 
 const cookies = new Cookies();
 
@@ -11,8 +10,6 @@ const REQUEST_HEADERS = {
   Accept: "application/json",
   "Content-Type": "application/json",
 };
-
-console.log("slate api actions: ", Credentials.SLATE_API);
 
 const SERVER_PATH = "";
 
@@ -92,36 +89,4 @@ export const addToDatabase = async (data) => {
     return;
   }
   console.log("[ fetching done ]");
-};
-//
-//
-//
-export const Upload = async (event, user_id, slate) => {
-  console.log("slate api upload: ", Credentials.SLATE_API);
-
-  let slate_id = Credentials.SLATE_PRIVATE;
-  let api = Credentials.SLATE_API;
-  //Upload an image and insert a db query
-  let file = event.target.files[0];
-
-  const url = "https://uploads.slate.host/api/public/" + slate_id;
-  let data = new FormData();
-  data.append("data", file);
-
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: "Basic " + api,
-    },
-    body: data,
-  });
-  const json = await response.json();
-  // NOTE: the URL to your asset will be available in the JSON response.
-  console.log(json);
-
-  let insert = await Actions.addToDatabase({
-    user_id: user_id,
-    object_id: json.data.cid,
-    slate: slate_id,
-  });
 };

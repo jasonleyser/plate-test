@@ -2,8 +2,6 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-console.log("client id knexfile: ", process.env.CLIENT_ID);
-
 /* prettier-ignore */
 module.exports = {
   development: {
