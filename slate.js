@@ -11,8 +11,8 @@ export const Upload = async (event, user_id, slate) => {
   console.log("slate api slate in: ", Credentials.SLATE_API);
   //Upload an image and insert a db query
   let file = event.target.files[0];
-  let slate_id = process.env.SLATE_PRIVATE;
-  let api = process.env.SLATE_API;
+  let slate_id = Credentials.SLATE_PRIVATE;
+  let api = Credentials.SLATE_API;
 
   const url = "https://uploads.slate.host/api/public/" + slate_id;
   let data = new FormData();
