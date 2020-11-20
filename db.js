@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== "production") {
 import configs from "~/knexfile";
 import knex from "knex";
 
-console.log("client id db: ", process.env.CLIENT_ID);
+console.log("db name: ", process.env.DB_NAME);
 
 const environment =
   process.env.NODE_ENV !== "production" ? "development" : "production";

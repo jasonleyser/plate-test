@@ -8,7 +8,7 @@ import JWT, { decode } from "jsonwebtoken";
 const google = require("googleapis").google;
 const OAuth2 = google.auth.OAuth2;
 
-//console.log("slate api: ", Credentials.SLATE_API);
+console.log("slate api data: ", Credentials.SLATE_API);
 
 const runQuery = async ({ queryFn, errorFn, label }) => {
   let response;
@@ -299,5 +299,32 @@ export const getUserUploads = async ({ user_id, limit }) => {
         source: e,
       };
     },
+  });
+};
+
+export const uploadToSlate = async (event, user_id, slate) => {
+  console.log(Credentials.SLATE_API);
+  //Upload an image and insert a db query
+  let file = event.target.files[0];
+
+  const url = "https://uploads.slate.host/api/public/" + slate_id;
+  let data = new FormData();
+  data.append("data", file);
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: "Basic " + api,
+    },
+    body: data,
+  });
+  const json = await response.json();
+  // NOTE: the URL to your asset will be available in the JSON response.
+  console.log(json);
+
+  let insert = await Actions.addToDatabase({
+    user_id: user_id,
+    object_id: json.data.cid,
+    slate: slate_id,
   });
 };
