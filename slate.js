@@ -7,7 +7,7 @@ import * as Credentials from "~/common/credentials";
 
 console.log("slate api slate out: ", Credentials.SLATE_API);
 
-export const Upload = async (event, user_id, slate) => {
+const Upload = async (event, user_id, slate) => {
   console.log("slate api slate in: ", Credentials.SLATE_API);
   //Upload an image and insert a db query
   let file = event.target.files[0];
@@ -35,3 +35,5 @@ export const Upload = async (event, user_id, slate) => {
     slate: slate_id,
   });
 };
+
+export default Upload;
